@@ -1,0 +1,38 @@
+{% extends "encyclopedia/layout.html" %}
+
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+
+
+{% block body %}
+
+{% if edit %}
+
+  <a href = "https://guides.github.com/features/mastering-markdown/">Markdown Guide</a>
+  <form action = "{% url 'encyclopedia:edit' old_title=title %}" method = "post">
+      {% csrf_token %}
+      {{ page_form }}
+      <button class='save' type = "submit" value = "Submit">Save Entry<button>
+
+  </form>
+
+
+
+{% else %}
+
+  <h1> {{ title }} </h1>
+  <a href = "https://guides.github.com/features/mastering-markdown/">Markdown Guide</a>
+  <form action = "{% url 'encyclopedia:create' %}" method = "post">
+      {% csrf_token %}
+      <button class='save' type = "submit" value = "Submit">Save Entry</button>
+
+      {{ page_form }}
+      <button class='save' type = "submit" value = "Submit">Save Entry</button>
+
+  </form>
+
+{% endif %}
+{% endblock %}

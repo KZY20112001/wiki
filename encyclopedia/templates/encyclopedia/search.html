@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+    {% if entries %}
+    <h1>All Pages that contains the word "{{ title }}"</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <li><a href = "{{entry}}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+        <h1>There are no pages containing the word "{{ title }}"</h1>
+    {% endif %}
+
+{% endblock %}
